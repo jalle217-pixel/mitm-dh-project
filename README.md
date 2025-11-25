@@ -8,7 +8,7 @@ This project implements Diffie–Hellman (DH) key exchange from first principles
 
 > **Important:** This is an educational implementation to demonstrate protocol weaknesses when authentication is not used. It is **not secure** and should never be used in production.
 
-## Project Structure
+Project Structure
 mitm-dh-project/
 ├─ .gitignore
 ├─ README.md
@@ -27,7 +27,7 @@ mitm-dh-project/
 - `dh/mitm.py` — Man-in-the-middle attacker class (Mallory).
 - `demo.py` — Script that runs two scenarios: normal exchange and MITM attack.
 
-## Approach
+Approach
 1. Implement DH parameter handling (p, g), private key generation, public key calculation, and shared secret computation using modular exponentiation.
 2. Build a tiny stream cipher that derives a keystream from the shared integer secret so that two parties with the same shared secret can communicate by XOR encryption/decryption.
 3. Implement a `Mitm` class that intercepts public keys and substitutes its own public key, leading to the attacker sharing secrets with both endpoints.
@@ -35,7 +35,7 @@ mitm-dh-project/
    - Scenario A: normal DH exchange (no attacker) — Alice and Bob share the same secret.
    - Scenario B: MITM — Mallory intercepts and reads/modifies messages.
 
-## How to Run
+How to Run
 1. Clone the repository (or create files locally as provided).
 2. From the repo root run:
 
