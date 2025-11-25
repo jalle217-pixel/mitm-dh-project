@@ -1,5 +1,5 @@
 """
-Demo runner. It simulates a client (Alice) and server (Bob) performing DH key exchange
+It simulates a client (Alice) and server (Bob) performing DH key exchange
 and sending messages. It shows:
 - Normal (no attacker): Alice and Bob share the same secret and can communicate.
 - MITM: Mallory intercepts public keys and reads/modifies messages.
@@ -82,3 +82,4 @@ def scenario_with_mitm():
 if __name__ == "__main__":
     scenario_no_mitm()
     scenario_with_mitm()
+
