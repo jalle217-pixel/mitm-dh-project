@@ -6,7 +6,7 @@ Example flow simulated here:
 - Alice sends A = g^a mod p -> attacker intercepts, sends M = g^m to Bob
 - Bob sends B = g^b mod p -> attacker intercepts, sends M' = g^m' to Alice
 Attacker then holds secret1 = (A)^m (shared with Alice) and secret2 = (B)^m' (shared with Bob)
-For the simplest demonstration we'll use a single attacker private key m and substitute its public key both ways.
+
 """
 
 from .dh import DiffieHellman
@@ -67,3 +67,4 @@ class Mitm:
         if not self.cipher_alice:
             raise ValueError("No cipher with Alice")
         return self.cipher_alice.encrypt(plaintext)
+
