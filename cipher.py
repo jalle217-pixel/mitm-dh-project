@@ -2,14 +2,13 @@
 Very simple XOR stream cipher for demonstration.
 
 - Derives a keystream from the shared secret integer by repeatedly hashing / transforming the integer
-  via simple math to produce bytes. (We avoid using hashlib to be conservative per instructions.)
-- NOT cryptographically secure. Only for demonstration to show that attacker who has shared secret can read messages.
+  via simple math to produce bytes.
 """
 
 from typing import ByteString
 
 def int_to_bytes(n: int) -> bytes:
-    """Convert integer to bytes (big endian)."""
+    """Convert integer to bytes"""
     if n == 0:
         return b"\x00"
     out = bytearray()
@@ -25,8 +24,8 @@ class XORCipher:
         self._state = shared_secret_int & 0xFFFFFFFFFFFFFFFF
 
     def _next_byte(self) -> int:
-        """Produce a pseudo-random byte from internal state. LCG-like (not secure)."""
-        # constants from minimal LCG (educational)
+        """Produce a pseudo-random byte from internal state."""
+        # constants from minimal
         a = 6364136223846793005
         c = 1
         self._state = (a * self._state + c) & 0xFFFFFFFFFFFFFFFF
@@ -42,3 +41,4 @@ class XORCipher:
     def decrypt(self, ciphertext: ByteString) -> bytes:
         # XOR is symmetric
         return self.encrypt(ciphertext)
+
